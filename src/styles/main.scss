@@ -30,7 +30,8 @@ body {
   flex-wrap: wrap;
   gap: $gap-size;
   padding: 0 ($padding-horizontal / 2);
-  max-width: calc(#{$column * $day-size} + (#{$column - 1} * #{$gap-size}));
+  // prettier-ignore
+  max-width: calc(#{$column * $day-size} + (#{$column - 1} * #{$gap-size}) + #{$padding-horizontal});
 
   @each $name, $index in $days {
     &--start-day-#{$name} {
@@ -58,7 +59,9 @@ body {
     align-items: center;
     justify-content: center;
 
-    transition: all $transition-time;
+    transition:
+      background-color $transition-time,
+      transform $transition-time;
 
     &::before {
       content: '';
@@ -71,7 +74,6 @@ body {
     &:hover {
       background-color: $hover-color;
       transform: translateY(-20px);
-      cursor: pointer;
     }
   }
 }
